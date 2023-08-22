@@ -30,8 +30,8 @@ export const getUsuario = async( req: Request , res: Response ) => {
 export const postUsuario = async( req: Request , res: Response ) => {
 
     const { body } = req;
-    //Encriptando la contraseña
-
+    
+    //TODO: Encriptando la contraseña
     const password = body.password
     
 

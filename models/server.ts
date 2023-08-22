@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import userRoutes from '../routes/usuario';
 import cursoRoutes from '../routes/curso';
 import tareaRoutes from '../routes/tarea';
+import authRoutes from '../routes/auth';
 import cors from 'cors';
 import db from '../db/connection';
 
@@ -12,6 +13,7 @@ class Server {
     private port: string;
     private apiPaths = {
         usuarios: '/api/usuarios',
+        auth:'/api/auth',
         cursos:'/api/cursos',
         tareas:'/api/tareas'
     }
@@ -54,6 +56,7 @@ class Server {
         this.app.use( this.apiPaths.usuarios, userRoutes );
         this.app.use(this.apiPaths.cursos,cursoRoutes);
         this.app.use(this.apiPaths.tareas,tareaRoutes);
+        this.app.use(this.apiPaths.auth,authRoutes);
     }
     listen() {
         this.app.listen( this.port, () => {

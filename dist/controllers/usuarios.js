@@ -34,15 +34,17 @@ const getUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.getUsuario = getUsuario;
 const postUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
+    //TODO: Encriptando la contraseña
+    const password = body.password;
     try {
-        const existeEmail = yield usuario_1.default.findOne({
+        const existeCorreo = yield usuario_1.default.findOne({
             where: {
-                email: body.email
+                correo: body.correo
             }
         });
-        if (existeEmail) {
+        if (existeCorreo) {
             return res.status(400).json({
-                msg: 'Ya existe un usuario con el email ' + body.email
+                msg: 'Ya existe un usuario con el correo ' + body.correo
             });
         }
         const usuario = usuario_1.default.build(body);
